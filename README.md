@@ -23,6 +23,18 @@ Every story was verified against its source before it was drawn. The
 artwork is original flat vector illustration, rendered
 deterministically — the same input always yields the same PNG bytes.
 
+## Method
+
+The page was designed sheet-first against a fixed checklist, then the
+renderer was written to realise that design: the date is the largest
+element on the page; every illustrated panel carries a number, a city,
+a topic, a two-line summary and its source; story numbering runs
+continuously from the heroes through the cards into the text briefs;
+the map's numbered pins match the story numbers; and no part of the
+canvas is left empty. The layout deliberately differs from other
+entries — 22 stories as 3 heroes, 15 cards and 4 briefs — rather than
+copying the structure of any existing front page.
+
 `main.py` (Python 3.13, standard library only) copies the committed
 `entry.png` to the output path, so both harness runs write identical
 bytes.
