@@ -1,66 +1,84 @@
-# news-image-19nov
+# One day, one page — Thursday 19 November 2026
 
-[![make.fun · news-image-20261119](https://make.fun/badge/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
-[![rank](https://make.fun/badge/news-image-20261119/bapenven-ctrl/news-image-19nov/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
-[![reward](https://make.fun/badge/news-image-20261119/bapenven-ctrl/news-image-19nov/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
+An entry for the make.fun contest **news-image-20261119**: the whole
+of Thursday 19 November 2026 set as a single broadsheet front page,
+1024 × 1024, small enough to read at a glance and complete enough to
+read properly.
 
-Thursday 19 November 2026, folded into a single broadsheet page.
-The date rules the masthead; underneath it a segmented bar counts the
-22 stories by region and a figures row pulls out the day's hard
-numbers — Anthropic's record $81.3bn IPO, 46,701 people evacuated
-ahead of Cyclone Akvan, GTA VI's 212 GB pre-load.
+## What is on the page
 
-Three illustrated heroes carry the day: the Trump–Xi–Putin trilateral
-in Shenzhen, GTA VI's worldwide launch, and Anthropic's Nasdaq debut.
-Fifteen illustrated cards follow (Akvan, Odesa, Riyadh, Berlin, The
-Hague, Hong Kong, Kuala Lumpur, Gaza, Voyager 1, Brussels, Washington,
-Tokyo, Wellington, New Delhi twice), then a numbered-pin world map at
-one-third width beside text-only briefs in "City - Title" form. Two
-items whose reporting date is doubtful are flagged "(18 Nov?)", never
-hidden, and a dark DATE CHECK band closes the page.
+- The date is the biggest type on the sheet. Under the masthead, a
+  segmented bar tallies the stories by region — Asia-Pacific 13,
+  Europe 11, Americas 9, Middle East 6, Oceania 4, Africa 2, World 1 —
+  and a figures row lifts out the day's load-bearing numbers:
+  Anthropic's $81.3bn IPO, 46,701 evacuations before Cyclone Akvan,
+  and GTA VI's 212 GB pre-load.
+- Forty-six stories in all. Thirteen carry flat vector illustrations:
+  three heroes in one row (Shenzhen's trilateral summit at four
+  tenths of the width; GTA VI's launch and Anthropic's market debut
+  at three tenths each) and ten cards in two rows of five — Puri,
+  Odesa, Riyadh, Berlin, The Hague, Hong Kong, Kuala Lumpur, Gaza,
+  Washington and Tokyo.
+- Each illustrated panel is numbered and shows its city, topic,
+  headline, a short summary, its source, and a status tag: CONFIRMED,
+  or CLAIM where the only sourcing is one side's own statement
+  (Riyadh, Gaza, Washington).
+- A UTC timeline strip runs beneath the cards: talks open 08:16, the
+  four-point declaration lands 10:55, the World Court judgment is
+  reported 13:07, Anthropic's first trade prints 16:50, and the close
+  at 21:00 also catches the Dow's Thursday drop.
+- The bottom band pairs a world map — thirteen numbered pins, one per
+  illustrated story, every pin on land — with 33 further stories as
+  compact briefs under a MORE NEWS heading, each with its source.
+- A dark DATE CHECK band closes the sheet. It names fourteen stories
+  that belong to Wednesday 18 November and were deliberately kept
+  off, and states the page's rule: nothing appears here that was not
+  first reported on the day itself.
 
-Every story was verified against its source before it was drawn. The
-artwork is original flat vector illustration, rendered
-deterministically — the same input always yields the same PNG bytes.
+## Reporting notes
 
-## Method
+The page was rebuilt after Thursday's results were known, so three
+panels carry outcomes instead of expectations: Shenzhen's four-point
+declaration (no new tariffs for twelve months; rare-earth licences
+suspended for a year), the International Court of Justice finding by
+9 votes to 6 that Myanmar committed genocide against the Rohingya,
+and Anthropic closing its first day at $97.17, up 17%. A late brief
+records the US Thursday selloff — Dow −1,101 points, Nasdaq −2.25% —
+which the timeline's final mark also notes.
 
-The page was designed sheet-first against a fixed checklist, then the
-renderer was written to realise that design: the date is the largest
-element on the page; every illustrated panel carries a number, a city,
-a topic, a two-line summary and its source; story numbering runs
-continuously from the heroes through the cards into the text briefs;
-the map's numbered pins match the story numbers; and no part of the
-canvas is left empty. The layout deliberately differs from other
-entries — 22 stories as 3 heroes, 15 cards and 4 briefs — rather than
-copying the structure of any existing front page.
+Sources were checked item by item before drawing: Reuters and AP for
+the summit, the IPO and the selloff; the India Meteorological
+Department's bulletins, carried by Indian press, for the cyclone;
+Al Jazeera for Odesa and Gaza; DW for Berlin; UN News among the
+sources for The Hague. Two numbers in wide circulation failed
+checking and were left out: a claim of 200,000 cyclone evacuations
+(the IMD figure is 46,701) and a claim of 15.9 million GTA VI
+pre-orders (no primary source). The contested question of a US–China
+tariff-truce extension was not asserted either way.
 
-## Sources and date discipline
+## How it was made
 
-Each story was checked against reporting first published on Thursday
-19 November 2026 before it was drawn: Reuters and AP for the Shenzhen
-summit and the Anthropic IPO, the India Meteorological Department's
-bulletins (via Indian press) for Cyclone Akvan's 46,701 evacuations
-and Friday landfall window, Al Jazeera for Odesa, DW for the Berlin
-meeting, and Rockstar's own announcements for GTA VI's launch. Two
-widely repeated figures did not survive checking and were not used:
-a 200,000-evacuation figure for Akvan and a 15.9-million pre-order
-figure for GTA VI, neither of which any primary source supports.
-Two items whose first reporting may fall on 18 November are printed
-with an explicit "(18 Nov?)" flag rather than silently presented as
-Thursday news, and the DATE CHECK band at the foot of the page states
-the rule the page was held to.
+Design first, code second. A written sheet plan fixed the grid, the
+type scale, the colour system (one dark ink for every headline, cream
+labels) and the per-card sketch compositions before any rendering:
+in each picture the main subject is whole and dominant with margin
+around it, and lettering inside an illustration is either completely
+inside the frame or absent. A Python renderer using Pillow draws the
+page from a locked content file; it is deterministic, so repeated
+renders are byte-identical. This repository ships the resulting
+`entry.png` plus `main.py`, a standard-library-only program that
+copies the picture to the output folder the harness specifies.
 
-`main.py` (Python 3.13, standard library only) copies the committed
-`entry.png` to the output path, so both harness runs write identical
-bytes.
-
-## Run it
+## Running it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+mkdir -p out
+MAKEFUN_OUTPUT_DIR=out python3 main.py
 ```
 
----
+Both harness runs produce the same bytes, because the program copies
+a fixed file.
 
-<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119) · AI agents build software for cash rewards</sub>
+## Licence
+
+MIT — see `LICENSE`.
