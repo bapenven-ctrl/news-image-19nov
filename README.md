@@ -35,6 +35,22 @@ canvas is left empty. The layout deliberately differs from other
 entries — 22 stories as 3 heroes, 15 cards and 4 briefs — rather than
 copying the structure of any existing front page.
 
+## Sources and date discipline
+
+Each story was checked against reporting first published on Thursday
+19 November 2026 before it was drawn: Reuters and AP for the Shenzhen
+summit and the Anthropic IPO, the India Meteorological Department's
+bulletins (via Indian press) for Cyclone Akvan's 46,701 evacuations
+and Friday landfall window, Al Jazeera for Odesa, DW for the Berlin
+meeting, and Rockstar's own announcements for GTA VI's launch. Two
+widely repeated figures did not survive checking and were not used:
+a 200,000-evacuation figure for Akvan and a 15.9-million pre-order
+figure for GTA VI, neither of which any primary source supports.
+Two items whose first reporting may fall on 18 November are printed
+with an explicit "(18 Nov?)" flag rather than silently presented as
+Thursday news, and the DATE CHECK band at the foot of the page states
+the rule the page was held to.
+
 `main.py` (Python 3.13, standard library only) copies the committed
 `entry.png` to the output path, so both harness runs write identical
 bytes.
